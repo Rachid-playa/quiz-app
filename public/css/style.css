@@ -1,0 +1,72 @@
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(Montserrat-Bold.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Montserrat-Regular;
+}
+
+#login-form, #signup-form{
+    
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+#login-form form, #signup-form form{
+    background-color: #Eaeff2;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+#login-form form h1, #signup-form form h1{
+    text-align: center;
+    font-size: 27px;
+}
+
+#login-form form input, #signup-form form input{
+    font-size: 20px;
+    padding: 5px;
+
+}
+
+#login-form form input[type='submit'], #signup-form form input[type='submit']{
+    background-color: #00e0d4;
+    border: 1px solid #00e0d4;
+    font-family: Montserrat-Bold;
+    letter-spacing: 2px;
+    width: min-content;
+    margin-left: auto;
+    margin-right: auto;
+    /* color: #Eaeff2; */
+}
+
+#login-form form input[type='submit'], #signup-form form input[type='submit']:hover{
+    cursor: pointer;
+    transition: 1.5s;
+    border: 2px solid #00e0d4;
+}
+
+#login-form form a, #signup-form form a{
+    text-decoration: none;
+    font-family: Montserrat-Bold;
+    color: #000;
+}
