@@ -20,6 +20,15 @@
     font-family:Montserrat-Regular;
 }
 
+.error{
+    background-color: #ff0000;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+
 #login-form, #signup-form{
     
     height: 100vh;
@@ -53,16 +62,20 @@
     border: 1px solid #00e0d4;
     font-family: Montserrat-Bold;
     letter-spacing: 2px;
-    width: min-content;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10px;
+    /* transition: 10s; */
     /* color: #Eaeff2; */
 }
 
-#login-form form input[type='submit'], #signup-form form input[type='submit']:hover{
+#login-form form input[type='submit']:hover, #signup-form form input[type='submit']:hover{
     cursor: pointer;
-    transition: 1.5s;
+    /* transition: 20s; */
     border: 2px solid #00e0d4;
+    background-color: #Eaeff2;
+    width:100%;
 }
 
 #login-form form a, #signup-form form a{
