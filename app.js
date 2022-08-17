@@ -1,23 +1,20 @@
 import express from 'express'
+import bcrypt from 'bcrypt'
+import mysql from 'mysql'
 
 const app = express()
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'quiz_app'
+})
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: false}))
 
-const users = [
-    {
-        name: 'Its Me',
-        email: 'hapakule@quiz-app.com',
-        password: '09876543'
-    },
-    {
-        name: 'Not Me',
-        email: 'neverhere@quiz-app.com',
-        password: '12345678'
-    }
-]
+
 
 //landing page
 app.get('/', (req, res) => {
@@ -26,7 +23,46 @@ app.get('/', (req, res) => {
 
 //display login page
 app.get('/login', (req, res) => {
-    res.render('login')
+    const user = {
+        email: '',
+        password: '',
+    }
+    res.render('login', {error: false, user:user})
+})
+
+// process login form
+app.post('/login', (req,res) =>{
+    const user = {
+        email: req.body.email,
+        password: req.body.password,
+    }
+
+    let sql = 'SELECT * FROM student WHERE email = ?'
+    connection.query(
+        sql, [user.email],
+        (error, results) => {
+            if (results.length > 0) {
+                bcrypt.compare(
+                    user.password, 
+                    results[0].password, 
+                    (error, passwordSame) => {
+                        if (passwordSame) {
+                            res.send('Grant Access')
+                        } else {
+                            let message = 'Incorrect password.'
+                            res.render('login', {error: true, message:message, user:user})
+                        }
+                    }
+                )
+            } else {
+                let message = 'Account does not exist.Please create one'
+                res.render('login', {error: true, message:message, user:user})
+            }
+        }
+    )
+
+    
+
 })
 
 // display signup page
@@ -52,7 +88,42 @@ app.post('/signup', (req, res) =>{
 
     if (user.password === user.confirmPassword) {
         
-    } else {
+        //check if user exists
+
+        let sql = 'SELECT * FROM student WHERE email = ?'
+        connection.query(
+            sql, [user.email], 
+            (error, results) => {
+                if (results.length > 0) {
+                    let message ='Account already exist for email provided'
+                    res.render('signup', {error: true, message:message, user:user})
+                } else {
+                    // create account
+                    bcrypt.hash(user.password, 10, (error, hash) =>{
+                        let sql = 'INSERT INTO student(email, name, password) VALUES(?,?,?)'
+                        connection.query(
+                            sql,
+                            [
+                                user.email,
+                                user.name,
+                                hash
+                            ],
+                            (error, results) => {
+                                res.send('Account successfully created')
+                            }
+                        )
+                    })
+                }
+            }
+        )
+
+
+        // let userExists = users.find(account => account.email === user.email)
+        // if(userExists){
+            
+        // }else{
+        }
+    else {
         
         let message = 'Password/confirm password mismatch'
 

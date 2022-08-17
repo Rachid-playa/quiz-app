@@ -52,30 +52,37 @@
 }
 
 #login-form form input, #signup-form form input{
-    font-size: 20px;
+    font-size: 17px;
     padding: 5px;
+    border: 1px solid gray;
+}
 
+#login-form form input:hover, #signup-form form input:hover{
+    transition: 0.2s;
+    border: 1px solid #00e0d4;
 }
 
 #login-form form input[type='submit'], #signup-form form input[type='submit']{
     background-color: #00e0d4;
-    border: 1px solid #00e0d4;
+    border: 2px solid #00e0d4;
     font-family: Montserrat-Bold;
     letter-spacing: 2px;
-    width: 80%;
+    width: max-content;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    /* transition: 10s; */
+    transition: 0.3s;
     /* color: #Eaeff2; */
 }
 
 #login-form form input[type='submit']:hover, #signup-form form input[type='submit']:hover{
-    cursor: pointer;
-    /* transition: 20s; */
+    /* cursor: pointer; */
     border: 2px solid #00e0d4;
     background-color: #Eaeff2;
-    width:100%;
+    letter-spacing: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* width:100%; */
 }
 
 #login-form form a, #signup-form form a{
