@@ -20,6 +20,37 @@
     font-family:Montserrat-Regular;
 }
 
+.container{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+header{
+    background: #Eaeff2;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a{
+    text-decoration: none;
+    color: #00e0d4;
+}
+
+nav li{
+    display: inline;
+    margin-left: 5px;
+    text-decoration: none;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+nav li:hover{
+    border-bottom: 2px solid #00e0d4;
+    transition: 0.3s ease;
+}
+
 .error{
     background-color: #ff0000;
     text-align: center;
@@ -51,9 +82,42 @@
     font-size: 27px;
 }
 
+.user-icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px black solid; */
+}
+
+.password-icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px black solid; */
+}
+
+.user-icon span{
+    width: 5%;
+    /* border: 1px black solid; */
+}
+
+.password-icon span{
+    width: 5%;
+    /* border: 1px black solid; */
+}
+
+#signup-form form input[type="email"]{
+    margin-left: 24px;
+} 
+
+#signup-form form #confirmPassword{
+    margin-left: 24px;
+} 
+
 #login-form form input, #signup-form form input{
     font-size: 17px;
     padding: 5px;
+    width: 90%;
     border: 1px solid gray;
 }
 
