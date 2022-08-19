@@ -47,8 +47,10 @@ nav li{
 }
 
 nav li:hover{
+    font-weight: bolder;
     border-bottom: 2px solid #00e0d4;
-    transition: 0.3s ease;
+    background: #ebedf0;
+    transition: 0.1s ;
 }
 
 .error{
