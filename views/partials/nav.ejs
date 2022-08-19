@@ -4,11 +4,12 @@
         <ul>
 
             <% if(locals.isLoggedIn){ %>
-                <li><a href="/dashboard">dashboard</a></li>
-                <li><a href="logout">logout</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/profile">My Account</a></li>
+                <li><a href="/logout">logout</a></li>
             <% }else { %>
                 <li><a href="/login">login</a></li>
-                <li><a href="signup">signup</a></li>
+                <li><a href="/signup">signup</a></li>
             <% } %>
 
         </ul>
